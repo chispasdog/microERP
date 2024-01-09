@@ -3,6 +3,7 @@ package com.example.microERP.controladores;
 
 import com.example.microERP.modelo.Producto;
 import com.example.microERP.servicio.ServicioProducto;
+import com.example.microERP.servicio.Serviciocliente;
 import com.example.microERP.servicio.Serviciopedido;
 import com.example.microERP.servicio.Serviciousuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class Principal {
     @Autowired
     Serviciopedido serviciopedido;
 
+    @Autowired
+    Serviciocliente serviciocliente;
 
 
 

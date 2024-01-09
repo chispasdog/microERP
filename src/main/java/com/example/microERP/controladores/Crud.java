@@ -1,16 +1,19 @@
-package com.example.demo.controladores;
+package com.example.microERP.controladores;
 
 
+import com.example.microERP.modelo.Cliente;
 import com.example.microERP.modelo.Pedido;
 import com.example.microERP.modelo.Producto;
 import com.example.microERP.modelo.Usuario;
 import com.example.microERP.servicio.ServicioProducto;
+import com.example.microERP.servicio.Serviciocliente;
 import com.example.microERP.servicio.Serviciopedido;
 import com.example.microERP.servicio.Serviciousuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class Crud {
 
     @Autowired
     Serviciopedido serviciopedido;
+
+    @Autowired
+    Serviciocliente serviciocliente;
 
 
 
@@ -62,6 +68,18 @@ public class Crud {
     public List<Usuario> CogerUsuarioPorId(@PathVariable Long id) {
         return serviciousuario.buscarporid(id);
     }
+
+    @GetMapping("/clientes")
+    public List<Cliente> listarClientes() {
+        return serviciocliente.listartodos();
+    }
+
+    @GetMapping("/clientes/{id}")
+    public Cliente obtenerClientePorId(@PathVariable Long id) {
+        return serviciocliente.buscarporid(id).stream().findFirst().orElse(null);
+    }
+
+
 
 
 
